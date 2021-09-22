@@ -4,12 +4,14 @@ import ptBR from "date-fns/locale/pt-BR";
 import Link from "next/link";
 import Image from "next/image";
 import Head from "next/head";
+import { MdChevronLeft, MdPlayArrow } from "react-icons/md";
 
 import { api } from "../../services/api";
 import { convertDurationToTimeString } from "../../utils/convertDurationToTimeString";
 
 import styles from './episode.module.scss';
 import { usePlayer } from "../../contexts/PlayerContext";
+import React from "react";
 
 type Episode = {
     id: string;
@@ -38,9 +40,12 @@ export default function Episode( { episode }: EpisodeProps ) {
 
             <div className={styles.thumbnailContainer}>
                 <Link href="/">
-                    <button type="button">
-                        <img src="/arrow-left.png" alt="Voltar" />
-                    </button>
+                    <div className={styles.button}>
+                        <MdChevronLeft
+                            className={styles.buttonIcon}
+                            title="Voltar"
+                        />
+                    </div>
                 </Link>
                 <Image 
                     width={700} 
@@ -48,9 +53,11 @@ export default function Episode( { episode }: EpisodeProps ) {
                     src={episode.thumbnail}
                     objectFit="cover"
                 />
-                <button type="button" onClick={() => play(episode)}>
-                    <img src="/play.png" alt="Tocar episódio" />
-                </button>
+                <MdPlayArrow
+                    onClick={() => play(episode)}
+                    title="Tocar episódio"
+                    className={styles.button}
+                />
             </div>
 
             <header>

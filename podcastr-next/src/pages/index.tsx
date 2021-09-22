@@ -7,6 +7,7 @@ import { format, parseISO } from 'date-fns';
 //O parseISO converte a data e converte pra um Date() do JS
 import ptBr from 'date-fns/locale/pt-BR';
 import { convertDurationToTimeString } from "../utils/convertDurationToTimeString";
+import { MdPlayArrow } from 'react-icons/md';
 
 import styles from './home.module.scss';
 import { usePlayer } from "../contexts/PlayerContext";
@@ -77,9 +78,11 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
                   <span>{episode.durationAsString}</span>
                 </div>
 
-                <button type="button" onClick={() => playList(episodeList, index)}>
-                  <img src="/play-green.png" alt="Tocar episódio"/>
-                </button>
+                <MdPlayArrow 
+                  className={styles.playButtonIcon} 
+                  onClick={() => playList(episodeList, index)} 
+                  title="Tocar episódio" 
+                />
               </li>
             )
           })}
@@ -120,9 +123,11 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
                   <td style={{ width: 100 }}>{episode.publishedAt}</td>
                   <td>{episode.durationAsString}</td>
                   <td>
-                    <button type="button" onClick={() => playList(episodeList, index + latestEpisodes.length)}>
-                      <img src="/play-green.png" alt="Tocar episódio" />
-                    </button>
+                    <MdPlayArrow 
+                      onClick={() => playList(episodeList, index + latestEpisodes.length)} 
+                      className={styles.playButtonIcon}
+                      title="Tocar episódio"
+                    />
                   </td>
                 </tr>
               )

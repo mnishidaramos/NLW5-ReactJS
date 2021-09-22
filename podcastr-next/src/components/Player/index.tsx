@@ -3,6 +3,14 @@ import { useEffect, useRef, useState } from 'react';
 import { usePlayer } from '../../contexts/PlayerContext';
 import Image from 'next/image';
 import Slider from 'rc-slider';
+import { 
+    MdPlayArrow,
+    MdPause,
+    MdSkipNext,
+    MdSkipPrevious,
+    MdLoop,
+    MdShuffle
+} from 'react-icons/md';
 
 import 'rc-slider/assets/index.css';
 import styles from './styles.module.scss';
@@ -121,19 +129,40 @@ export function Player() {
                 )}
 
                 <div className={styles.buttons}>
-                    <button
+                    <MdShuffle
+                        onClick={toggleShuffle}
+                        className={isShuffling ? styles.isActive : styles.playerButtons}
+                        title="Embaralhar"
+                    />
+                    {/* <button
                         type="button" 
                         disabled={!episode || episodeList.length === 1}
                         onClick={toggleShuffle}
                         className={isShuffling ? styles.isActive : ''}
                         >
                         <img src="/shuffle.png" alt="Embaralhar"/>
-                    </button>
-                    <button type="button" disabled={!episode || !hasPrevious} onClick={playPrevious}>
-                        <img src="/play-previous.png" alt="Tocar anterior"/>
-                    </button>
+                    </button> */}
 
-                    <button
+                    <MdSkipPrevious
+                        onClick={playPrevious}
+                        title="Tocar anterior"
+                        className={styles.playerButtons}
+                    />
+                    {/* <button type="button" disabled={!episode || !hasPrevious} onClick={playPrevious}>
+                        <img src="/play-previous.png" alt="Tocar anterior"/>
+                    </button> */}
+
+                    {isPlaying
+                        ? <MdPause 
+                            onClick={togglePlay}
+                            className={styles.playButton}
+                            />
+                        : <MdPlayArrow 
+                            onClick={togglePlay}
+                            className={styles.playButton}
+                        />
+                    }
+                    {/* <button
                       type="button"
                       disabled={!episode}
                       className={styles.playButton}
@@ -143,18 +172,30 @@ export function Player() {
                             ? <img src="/pause.png" alt="Pausar"/>
                             : <img src="/play.png" alt="Tocar"/>
                         }
-                    </button>
-                    <button type="button" disabled={!episode || hasNext} onClick={playNext}>
+                    </button> */}
+
+                    <MdSkipNext 
+                        onClick={playNext}
+                        title="Tocar próxima"
+                        className={styles.playerButtons}
+                    />
+                    {/* <button type="button" disabled={!episode || hasNext} onClick={playNext}>
                         <img src="/play-next.png" alt="Tocar próxima"/>
-                    </button>
-                    <button
+                    </button> */}
+
+                    <MdLoop
+                        onClick={toggleLoop}
+                        className={isLooping ? styles.isActive : styles.playerButtons}
+                        title="Repetir"
+                    />
+                    {/* <button
                       type="button"
                       disabled={!episode}
                       onClick={toggleLoop}
                       className={isLooping ? styles.isActive : ''}
                       >
                         <img src="/repeat.png" alt="Repetir"/>
-                    </button>
+                    </button> */}
                 </div>
             </footer>
         </div>

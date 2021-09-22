@@ -84,7 +84,9 @@
 
             }
 
-            button {
+            .playButtonIcon {
+                color: var(--green-500);
+
                 position: absolute;
                 right: 2rem;
                 bottom: 2rem;
@@ -97,11 +99,6 @@
                 font-size: 0;
 
                 transition: filter 0.2s;
-
-                img {
-                    width: 1.5rem;
-                    height: 1.5rem;
-                }
 
                 &:hover {
                     filter: brightness(0.95);
@@ -151,7 +148,9 @@
                 }
             }
 
-            button {
+            .playButtonIcon {
+                color: var(--green-500);
+
                 width: 2rem;
                 height: 2rem;
                 background: var(--white);

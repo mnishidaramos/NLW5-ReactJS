@@ -10,16 +10,21 @@
             border-radius: 1rem;
         }
 
-        button {
+        .button {
             width: 3rem;
             height: 3rem;
             border-radius: 0.75rem;
             border: 0;
             position: absolute;
             z-index: 5;
-            font-size: 0;
-
+            color: var(--gray-50);
+            
             transition: filter 0.2s;
+            
+            .buttonIcon {
+                width: 3rem;
+                height: 3rem;
+            }
 
             &:first-child {
                 left: 0;

@@ -99,39 +99,45 @@
     margin-top: 2.5rem;
     gap: 1.5rem;
 
-    button {
-        background: transparent;
+    .isActive {
+        width: 2rem;
+        height: 2rem;
+        color: var(--green-500);
+        // filter: invert(0.35) sepia(1) saturate(3) hue-rotate(100deg)
+    }
+
+    .isActive:hover {
+        filter: brightness(0.6);
+    }
+
+    .playerButtons {
         border: 0;
-        font-size: 0; //Alinha a imagem no centro quando o botão só tem uma imagem
-
         transition: 0.2s;
+        width: 2rem;
+        height: 2rem;
 
-        &:disabled {
-            cursor: not-allowed;
-            opacity: 0.5;
+        &:hover {
+            filter: brightness(0.6);
         }
 
-        &:hover:not(:disabled) {
-            filter: brightness(0.7)
-        }
+        // &:disabled {
+        //     cursor: not-allowed;
+        //     opacity: 0.5;
+        // }
 
-        &.isActive {
-            filter: invert(0.35) sepia(1) saturate(3) hue-rotate(100deg)
-        }
+        // &:hover:not(:disabled) {
+        //     filter: brightness(0.7)
+        // }
+    }
 
-        &.isActive:hover {
-            filter: brightness(0.6) invert(0.35) sepia(1) saturate(3) hue-rotate(100deg)
-        }
+    .playButton{
+        width: 4rem;
+        height: 4rem;
+        border-radius: 1rem;
+        background: var(--purple-400);
 
-        &.playButton{
-            width: 4rem;
-            height: 4rem;
-            border-radius: 1rem;
-            background: var(--purple-400);
-
-            &:hover:not(:disabled) {
-                filter: brightness(0.95);
-            }
+        &:hover {
+            filter: brightness(0.95);
         }
     }
 }
